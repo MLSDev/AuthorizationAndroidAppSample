@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Authorization Sample</string>
+
+    <string name="hint_email">email</string>
+    <string name="hint_password">password</string>
+
+    <string name="btn_sign_in">sign in</string>
+
+    <string name="error_message_too_short_password">Too short</string>
+    <string name="error_message_incorrect">Incorrect</string>
+    <string name="error_message_empty">Empty</string>
 </resources>
