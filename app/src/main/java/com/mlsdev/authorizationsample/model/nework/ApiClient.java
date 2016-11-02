@@ -13,7 +13,7 @@ import rx.schedulers.Schedulers;
 
 public class ApiClient {
     private static ApiClient instance;
-    private static String sBaseUrl = "/";
+    private static String sBaseUrl = "http://sample.com";
     private AuthorizationService authorizationService;
 
     private ApiClient() {

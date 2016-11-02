@@ -4,4 +4,5 @@ import java.util.Map;
 
 public interface AuthorizationView {
     void showAuthorizationErrors(Map<String, String> errors);
+    void onUserSignedIn();
 }

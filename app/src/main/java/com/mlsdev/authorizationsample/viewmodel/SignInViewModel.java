@@ -69,7 +69,7 @@ public class SignInViewModel extends BaseObservable {
 
         @Override
         public void onNext(SignInResponseData signInResponseData) {
-            // TODO: 11/2/16 handle when a user has been signed in
+            view.onUserSignedIn();
         }
     }
 

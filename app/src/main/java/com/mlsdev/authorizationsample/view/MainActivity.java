@@ -1,5 +1,6 @@
 package com.mlsdev.authorizationsample.view;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -31,6 +32,11 @@ public class MainActivity extends AppCompatActivity implements AuthorizationView
 
         if (errors.containsKey("password"))
             binding.tilPasswordWrapper.setError(errors.get("password"));
+    }
+
+    @Override
+    public void onUserSignedIn() {
+        startActivity(new Intent(this, CongratulationActivity.class));
     }
 
 }
