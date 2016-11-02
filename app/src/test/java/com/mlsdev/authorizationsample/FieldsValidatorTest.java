@@ -83,6 +83,11 @@ public class FieldsValidatorTest {
         Assert.assertEquals(passwordErrorMessage, errors.get(Constants.PASSWORD));
     }
 
+    @Test(expected = NullPointerException.class)
+    public void testEmailAndPasswordAreNull() {
+        FieldsValidator.validateFields(context, getValues(null, null));
+    }
+
     private Map<String, String> getValues(String email, String password) {
         Map<String, String> values = new ArrayMap<>();
         values.put(Constants.EMAIL, email);
