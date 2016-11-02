@@ -1,0 +1,10 @@
+{
+  "errors": {
+    "email": [
+      "not found"
+    ],
+    "password": [
+      "is invalid"
+    ]
+  }
+}

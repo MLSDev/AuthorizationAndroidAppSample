@@ -27,6 +27,11 @@ ext {
     supportVersion = '25.0.0'
     retrofitVersion = '2.1.0'
     powermockVersion = '1.6.5'
+    dexmarkVersion = '1.2'
+    junitVersion = '4.12'
+    supportTestsLibVersion = '0.5'
+    espressoVersion = '2.2.2'
+    okhttpVersion = '3.4.1'
 }
 
 dependencies {
@@ -38,11 +43,24 @@ dependencies {
     compile "com.android.support:design:$supportVersion"
 
     // Unit testing
-    testCompile 'junit:junit:4.12'
+    testCompile "junit:junit:$junitVersion"
     testCompile "org.mockito:mockito-core:1.10.19"
     testCompile "org.powermock:powermock-api-mockito:$powermockVersion"
     testCompile "org.powermock:powermock-module-junit4:$powermockVersion"
     testCompile "org.robolectric:robolectric:3.1.2"
+
+    // UI tests
+    androidTestCompile "junit:junit:$junitVersion"
+    androidTestCompile "com.google.dexmaker:dexmaker:${dexmarkVersion}"
+    androidTestCompile "com.google.dexmaker:dexmaker-mockito:${dexmarkVersion}"
+    androidTestCompile "com.android.support.test:runner:$supportTestsLibVersion"
+    androidTestCompile "com.android.support.test:rules:$supportTestsLibVersion"
+    androidTestCompile "com.android.support:support-annotations:$supportVersion"
+    androidTestCompile "com.android.support.test.espresso:espresso-core:$espressoVersion"
+    androidTestCompile "com.android.support.test.espresso:espresso-intents:$espressoVersion"
+    androidTestCompile "com.squareup.okhttp3:mockwebserver:$okhttpVersion"
+    androidTestCompile "com.squareup.okhttp3:okhttp:$okhttpVersion"
+    compile "com.squareup.okhttp3:okhttp:$okhttpVersion"
 
     // RxJava
     compile 'io.reactivex:rxjava:1.1.6'
