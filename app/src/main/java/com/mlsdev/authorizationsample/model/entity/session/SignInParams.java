@@ -7,6 +7,15 @@ public class SignInParams {
     @SerializedName("user")
     private User user;
 
+    public SignInParams() {
+    }
+
+    public SignInParams(String email, String password) {
+        user = new User();
+        user.setEmail(email);
+        user.setPassword(password);
+    }
+
     public User getUser() {
         return user;
     }
