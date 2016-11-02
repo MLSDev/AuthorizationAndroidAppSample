@@ -33,6 +33,11 @@ public class ApiClient {
         return instance;
     }
 
+    public static void setBaseUrl(String baseUrl) {
+        sBaseUrl = baseUrl;
+        instance = null;
+    }
+
     public Subscription signUserIn(SignInParams params, Subscriber<SignInResponseData> subscriber) {
         return authorizationService.signUserIn(params)
                 .subscribeOn(Schedulers.io())
