@@ -25,26 +25,19 @@ public class FieldsValidator {
 
     public static Map<String, String> validateFields(Context context, Map<String, String> fields) {
         sInvalidFields = new HashMap<>();
-        boolean oneIsEmpty = false;
 
         for (Map.Entry<String, String> entry : fields.entrySet()) {
-            if (entry.getValue().isEmpty()) {
-                oneIsEmpty = true;
+            if (entry.getValue().isEmpty())
                 sInvalidFields.put(entry.getKey(), context.getString(R.string.error_message_empty));
-            }
         }
 
-        if (oneIsEmpty)
-            return sInvalidFields;
-
-
-        if (fields.containsKey(EMAIL)) {
+        if (fields.containsKey(EMAIL) && !sInvalidFields.containsKey(EMAIL)) {
             if (!validateEmail(fields.get(EMAIL))) {
                 sInvalidFields.put(EMAIL, context.getString(R.string.error_message_incorrect));
             }
         }
 
-        if (fields.containsKey(PASSWORD)) {
+        if (fields.containsKey(PASSWORD) && !sInvalidFields.containsKey(PASSWORD)) {
             if (!validatePasswordLength(fields.get(PASSWORD))) {
                 sInvalidFields.put(PASSWORD, context.getString(R.string.error_message_too_short_password));
             }

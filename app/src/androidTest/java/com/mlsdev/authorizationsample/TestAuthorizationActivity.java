@@ -103,6 +103,19 @@ public class TestAuthorizationActivity {
     }
 
     @Test
+    public void testSignUserIn_WithEmptyEmailAndIncorrectPassword() {
+        enterEmail("");
+        enterPassword(incorrectPassword);
+        performSignInButtonClick();
+
+        Espresso.onView(ViewMatchers.withText(context.getString(R.string.error_message_empty)))
+                .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
+
+        Espresso.onView(ViewMatchers.withText(context.getString(R.string.error_message_too_short_password)))
+                .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
+    }
+
+    @Test
     public void testSignUserIn() {
         mockWebServer.enqueue(new MockResponse().setBody(AssetsUtil.getSignInResponseData(context)));
 
@@ -115,14 +128,12 @@ public class TestAuthorizationActivity {
 
     private void enterEmail(String email) {
         Espresso.onView(ViewMatchers.withId(R.id.et_email))
-                .perform(ViewActions.clearText())
                 .perform(ViewActions.typeText(email))
                 .perform(ViewActions.closeSoftKeyboard());
     }
 
     private void enterPassword(String password) {
         Espresso.onView(ViewMatchers.withId(R.id.et_password))
-                .perform(ViewActions.clearText())
                 .perform(ViewActions.typeText(password))
                 .perform(ViewActions.closeSoftKeyboard());
     }

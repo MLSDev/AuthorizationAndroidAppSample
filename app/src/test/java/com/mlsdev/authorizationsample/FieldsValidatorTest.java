@@ -83,6 +83,18 @@ public class FieldsValidatorTest {
         Assert.assertEquals(passwordErrorMessage, errors.get(Constants.PASSWORD));
     }
 
+    @Test
+    public void testEmptyEmailAndIncorrectPassword() {
+        Map<String, String> errors = FieldsValidator
+                .validateFields(context, getValues("", incorrectPassword));
+        actualResult = errors.isEmpty();
+        Assert.assertFalse(actualResult);
+        Assert.assertTrue(errors.containsKey(Constants.EMAIL));
+        Assert.assertTrue(errors.containsKey(Constants.PASSWORD));
+        Assert.assertEquals(emptyErrorMessage, errors.get(Constants.EMAIL));
+        Assert.assertEquals(passwordErrorMessage, errors.get(Constants.PASSWORD));
+    }
+
     @Test(expected = NullPointerException.class)
     public void testEmailAndPasswordAreNull() {
         FieldsValidator.validateFields(context, getValues(null, null));
